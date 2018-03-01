@@ -11,15 +11,15 @@ class PageOne(tkinter.Frame):
         self.input_entry = tkinter.Entry(self,
                                          width = 25)
         self.folder_label = tkinter.Label(self,
-                                          text = "Input path or drive you want to search\n>>>")
+                                          text = "Input path or drive you want to search >>>")
         self.folder_entry = tkinter.Entry(self,
                                           width = 25)
         
         self.input_label.grid(row = 1, column = 1, columnspan = 2, sticky = "EWNS")
         self.input_entry.grid(row = 1, column = 3, columnspan = 2, sticky = "EWNS")
 
-        self.folder_label.grid(row = 3, column = 1, columnspan = 2, sticky = "EWNS")
-        self.folder_entry.grid(row = 3, column = 3, columnspan = 4, sticky = "EWNS")
+        self.folder_label.grid(row = 2, column = 1, columnspan = 2, sticky = "EWNS")
+        self.folder_entry.grid(row = 2, column = 4, columnspan = 2, sticky = "EWNS")
 
         self.result_label = tkinter.Label(self,
                                           text = "Results: ")
@@ -27,8 +27,8 @@ class PageOne(tkinter.Frame):
         self.value_label = tkinter.Label(self,
                                          textvariable = self.value)
 
-        self.result_label.grid(row = 3, column = 1, columnspan = 2, sticky = "EWNS")
-        self.value_label.grid(row = 3, column = 3, columnspan = 4, sticky = "EWNS")
+        self.result_label.grid(row = 4, column = 1, columnspan = 1, sticky = "EWNS")
+        self.value_label.grid(row = 4, column = 2, columnspan = 2, sticky = "EWNS")
 
         self.result_button = tkinter.Button(self,
                                             text = "Search",
@@ -36,31 +36,26 @@ class PageOne(tkinter.Frame):
         self.button = tkinter.Button(self, text="Go to the start page",
                            command=lambda: controller.show_frame(StartPage))
 
-        self.result_button.grid(row = 4, column = 1, columnspan = 5, sticky = "EWNS")
-        self.button.grid(row = 4, column = 2, columnspan = 2, sticky = "EWNS")
+        self.result_button.grid(row = 3, column = 2, columnspan = 1, sticky = "EWNS")
+        self.button.grid(row = 3, column = 1, columnspan = 1, sticky = "EWNS")
 
     def comp_search(self):
+        where = self.input_entry.get()
 
-        while True:
-            where = self.input_entry.get()
-            
-            if where.lower() in ["y", "ye", "yes", "", " "]:
-                folder = self.folder_entry.get()
-                folder_list = []
-                for name in glob.glob(folder + "\\**", recursive=True):
-                    folder_list.append(name)
-                self.value.set(folder_list)
-                break
-	
-            elif where.lower() in ["n", "no", "noo"]:
-			    drive = self.folder_entry.get()
-			    drive_list = []
-			    for name in glob.glob(drive.lower() + "\\**", recursive=True):
-				    drive_list.append(name)
-			    self.value.set(drive_list)
-                break
-            else:
-                pass
+        if where.lower() in ["y", "ye", "yes", "", " "]:
+            folder = self.folder_entry.get()
+            folder_list = []
+            for name in glob.glob(folder + "\\**", recursive=True):
+                folder_list.append(name)
+            self.value.set(folder_list)
+        elif where.lower() in ["n", "no", "noo"]:
+            drive = self.folder_entry.get()
+            drive_list = []
+            for name in glob.glob(drive.lower() + "\\**", recursive=True):
+                drive_list.append(name)
+            self.value.set(drive_list)
+        else:
+            pass
 
 
 class PageSeven(tkinter.Frame):
