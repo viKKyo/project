@@ -1,6 +1,6 @@
 #Current Version:
+
 import tkinter
-from tkinter import *
 from tkinter import messagebox
 import glob
 import os
@@ -230,10 +230,11 @@ class PageTwo(tkinter.Frame):
         for z in range(len(file_list)):             #oanvändbar efter att for loopen körts
             temp_list = file_list[z].split("\\")
             only_name = only_name + " " + temp_list[-1]
-
-        print("\nFound the following files ending with " + searchword + ":")    #Skriver ut matchar till användaren
-        print("\n" + only_name + "\n")
-        print("\nSaving filepaths to '" + filename + "'.\n\n\n")
+        tkinter.messagebox.showinfo("Results:",
+                                    "Found the following files ending with" + searchword + ":" \
+                                        + only_name)
+        tkinter.messagebox.showinfo("Saving:",
+                                    "Saving filepaths to " + filename + ".")         #Skriver ut matchar till användaren
         for loc in range(len(file_list)):
             save_to.writelines(file_list[loc] + "\n")
         save_to.close
@@ -242,7 +243,6 @@ class PageTwo(tkinter.Frame):
 
 app = SeaofBTCapp()
 app.mainloop()
-
 ----------------------------------------------------------------------------------------------------------------------------
 
 import tkinter
