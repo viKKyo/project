@@ -1,3 +1,49 @@
+#CLI Ready version:
+def main_7():
+
+    process()
+
+
+def process():
+
+    file1 = input("Input your core file: ")
+    file2 = input("Input your comparisson file: ")
+
+    fileanalysis(file1, file2)
+
+
+def fileanalysis(file1, file2):
+    
+    file1_ = open(file1, "r")
+    file2_ = open(file2, "r")
+
+    file = []
+    compare_file = []
+
+    for lines in file1_.read().split(" "):
+        file.append(lines)
+    for lines in file2_.read().split(" "):
+        compare_file.append(lines)
+
+    difference_1 = set(file) - set(compare_file)
+    print("This is whats in file 1 but not in file 2: ", difference_1)
+
+main_7()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 """
 Filanalys. Datafiler är oftast mycket stora. Många gånger
 i forensiskt arbete vill man kunna se skillnader mellan
