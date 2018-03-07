@@ -337,9 +337,8 @@ class PageThreetwo(tkinter.Frame):
         counter = 0
         counter_list = []
         for num in temp_list:
-            num2 = num[0].split("-")
-            if num2.isdigit():
-
+            num2 = num.split("-")
+            if num2[0].isdigit():
                 if len(num2[0]) == 6 or len(num2[0]) == 8 and len(num2[1]) == 4:
                     perfect_match = perfect_match + 1
                     counter_list.append(temp_list[counter + 1])
@@ -359,11 +358,11 @@ class PageFive(tkinter.Frame):
         self.label0.grid(row=0, column=1, columnspan=1, sticky="ESWN")
 
         # överskrift
-        self.label = tkinter.Label(self, text="Modified or created time", fg='red', font="Times 16 bold italic")
+        self.label = tkinter.Label(self, text="Modified time", fg='red', font="Times 16 bold italic")
         self.label.grid(row=1, column=2, columnspan=5, sticky="ESWN")
 
         # labels
-        self.label2 = tkinter.Label(self, text="choose earliest date:")
+        self.label2 = tkinter.Label(self, text="choose earliest date: ")
         self.label3 = tkinter.Label(self, text="choose latest date:")
         self.label4 = tkinter.Label(self, text="Enter the Path:")
         self.label2.grid(row=2, column=2, columnspan=1, sticky="ESWN")
@@ -391,7 +390,7 @@ class PageFive(tkinter.Frame):
         date_start = self.entry1.get()
         date_end = self.entry2.get()
 
-        file_list1 = glob.glob(self.entry3.get())
+        file_list1 = glob.glob(self.entry3.get() + "*\\*")
 
         name_list = []
         filenames = []
@@ -729,7 +728,6 @@ class PageNine(tkinter.Frame):
 
 b = SuperHaxxorForensicTool()
 b.mainloop()
-
 
 
 -----------------------------------------------------------------
