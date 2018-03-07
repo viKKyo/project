@@ -355,8 +355,8 @@ class PageFive(tkinter.Frame):
         self.label.grid(row=1, column=2, columnspan=5, sticky="ESWN")
 
         # labels
-        self.label2 = tkinter.Label(self, text="choose earliest date: ")
-        self.label3 = tkinter.Label(self, text="choose latest date:")
+        self.label2 = tkinter.Label(self, text="choose earliest date:(YYYY-MM-DD) ")
+        self.label3 = tkinter.Label(self, text="choose latest date:(YYYY-MM-DD)")
         self.label4 = tkinter.Label(self, text="Enter the Path:")
         self.label2.grid(row=2, column=2, columnspan=1, sticky="ESWN")
         self.label3.grid(row=3, column=2, columnspan=1, sticky="ESWN")
